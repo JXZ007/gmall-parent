@@ -64,10 +64,6 @@ public class CategoryAdminController {
         List<BaseCategory3> category3s = categoryService.getCategory3(category2Id);
         return Result.ok(category3s);
     }
-    //http://api.gmall.com/admin/product/attrInfoList/{category1Id}/{category2Id}/{category3Id}
-    /**
-     * 获取分类id获取平台属性
-     */
-/*    @GetMapping("/attrInfoList/{category1Id}/{category2Id}/{category3Id}")
-    public Result<>*/
+
+
 }
