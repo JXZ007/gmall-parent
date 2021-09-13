@@ -1,0 +1,54 @@
+spring:
+  redis:
+    host: 192.168.100.100
+    port: 6379
+
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"  #允许复杂请求跨域
+            allowCredentials: true  #允许跨域带cookie
+      #http://api.gmall.com/api/user/passport/login
+      routes:
+        - id: admin-product
+          uri: lb://service-product
+          predicates:
+            - Path=/admin/product/**
+        - id: service-item
+          uri: lb://service-item
+          predicates:
+            - Path=/api/item/**
+        - id: service-user
+          uri: lb://service-user
+          predicates:
+            - Path=/api/user/**
+        - id: service-cart
+          uri: lb://service-cart
+          predicates:
+            - Path=/api/cart/**
+        - id: service-order
+          uri: lb://service-order
+          predicates:
+            - Path=/api/order/**
+        - id: service-pay
+          uri: lb://service-pay
+          predicates:
+            - Path=/api/payment/**
+        - id: service-seckill
+          uri: lb://service-seckill
+          predicates:
+            - Path=/api/seckill/**,/api/activity/**
+        - id: web-all
+          uri: lb://web-all
+          predicates:  #所有gmall域名相关请求都会来到 web-all
+            - Host=*.gmall.com,gmall.com
+  zipkin:
+    base-url: http://192.168.100.100:9411/
+    sender:
+      type: web
+authinfo:
+  urls: ["/cart.html","/order.html"]  #"/list.html","/myOrder.html","/order.html","/aaaa",

@@ -1,0 +1,38 @@
+server:
+  port: 8000
+
+spring:
+  datasource:
+    url: jdbc:mysql://192.168.100.100:3306/gmall_product?characterEncoding=utf-8&useSSL=false
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+  zipkin:
+    base-url: http://192.168.100.100:9411
+    sender:
+      type: web
+  redis:
+    port: 6379
+    host: 192.168.100.100
+  main:
+    allow-bean-definition-overriding: true
+minio:
+  url: http://192.168.100.100:9000/
+  accessKey: gmall-admin
+  secretKey: gmall-admin
+  defaultBucket: gmall
+
+
+search-service:  # 配置自己的业务线程池
+  thread:
+    core: 16
+    max:  32
+    keepalive: 60000
+    queue-length: 100000
+
+#mybatis-plus:
+logging:
+  level:
+    com:
+      atguigu:
+        gmall: debug
