@@ -4,10 +4,7 @@ import com.atguigu.gmall.common.result.Result;
 import com.atguigu.gmall.model.product.BaseAttrInfo;
 import com.atguigu.gmall.product.service.BaseAttrInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -34,4 +31,16 @@ public class BaseAttrInfoController {
         return Result.ok(baseAttrInfos);
 
     }
+
+    //http://api.gmall.com/admin/product/saveAttrInfo
+
+    /**
+     * 添加平台属性
+     */
+    @PostMapping("/saveAttrInfo")
+    public Result saveAttrInfo(@RequestBody BaseAttrInfo baseAttrInfo) {
+        baseAttrInfoService.saveOrUpdateInfoAndValue(baseAttrInfo);
+        return Result.ok();
+    }
+
 }
