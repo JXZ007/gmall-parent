@@ -2,7 +2,10 @@ package com.atguigu.gmall.product.controller;
 
 import com.atguigu.gmall.common.result.Result;
 import com.atguigu.gmall.model.product.BaseAttrInfo;
+import com.atguigu.gmall.model.product.BaseAttrValue;
 import com.atguigu.gmall.product.service.BaseAttrInfoService;
+import com.atguigu.gmall.product.service.BaseAttrValueService;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,9 @@ public class BaseAttrInfoController {
 
     @Autowired
     BaseAttrInfoService baseAttrInfoService;
+
+    @Autowired
+    BaseAttrValueService baseAttrValueService;
     //http://api.gmall.com/admin/product/attrInfoList/{category1Id}/{category2Id}/{category3Id}
     /**
      * 获取分类id获取平台属性
@@ -41,6 +47,18 @@ public class BaseAttrInfoController {
     public Result saveAttrInfo(@RequestBody BaseAttrInfo baseAttrInfo) {
         baseAttrInfoService.saveOrUpdateInfoAndValue(baseAttrInfo);
         return Result.ok();
+    }
+    //http://api.gmall.com/admin/product/getAttrValueList/{attrId}
+
+    /**
+     * 根据平台属性ID获取平台属性对象数据
+     */
+    @GetMapping("/getAttrValueList/{attrId}")
+    public Result<List<BaseAttrValue>> getAttrValueList(@PathVariable("attrId") Long attrId) {
+        QueryWrapper<BaseAttrValue> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("attr_id", attrId);
+        List<BaseAttrValue> list = baseAttrValueService.list(queryWrapper);
+        return Result.ok(list);
     }
 
 }

@@ -12,5 +12,4 @@ import java.util.List;
  */
 public interface BaseAttrValueMapper extends BaseMapper<BaseAttrValue> {
 
-
 }
