@@ -60,5 +60,4 @@ public class BaseAttrInfoController {
         List<BaseAttrValue> list = baseAttrValueService.list(queryWrapper);
         return Result.ok(list);
     }
-
 }
