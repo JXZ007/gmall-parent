@@ -8,6 +8,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * 品牌接口
  *
@@ -79,5 +81,16 @@ public class BaseTrademarkController {
         BaseTrademark trademark = baseTrademarkService.getById(id);
         return Result.ok(trademark);
 
+    }
+
+    //http://api.gmall.com/admin/product/baseTrademark/getTrademarkList
+
+    /**
+     * 获取品牌属性
+     */
+    @GetMapping("/baseTrademark/getTrademarkList")
+    public Result<List<BaseTrademark>> getTrademarkList() {
+        List<BaseTrademark> list = baseTrademarkService.list();
+        return Result.ok(list);
     }
 }
