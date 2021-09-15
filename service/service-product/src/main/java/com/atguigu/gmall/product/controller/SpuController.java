@@ -33,7 +33,16 @@ public class SpuController {
         return Result.ok(pageModel);
     }
 
+    //http://api.gmall.com/admin/product/saveSpuInfo
 
+    /**
+     * 保存spu
+     */
+    @PostMapping("/saveSpuInfo")
+    public Result saveSpuInfo(@RequestBody SpuInfo spuInfo) {
+        spuService.bigSaveSpu(spuInfo);
+        return Result.ok();
+    }
 
 
 }
