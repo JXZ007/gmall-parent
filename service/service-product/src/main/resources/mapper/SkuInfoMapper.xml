@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.gmall.product.mapper.SkuInfoMapper">
+    <update id="onSale">
+        update sku_info set is_sale =1 where id=#{skuId}
+    </update>
+    <update id="cancelSale">
+        update sku_info set is_sale =0 where id=#{skuId}
+    </update>
+</mapper>

@@ -66,4 +66,14 @@ public class SkuInfoServiceImpl extends ServiceImpl<SkuInfoMapper, SkuInfo> impl
         }
 
     }
+
+    @Override
+    public void onSale(Long skuId) {
+        skuInfoMapper.onSale(skuId);
+    }
+
+    @Override
+    public void cancelSale(Long skuId) {
+        skuInfoMapper.cancelSale(skuId);
+    }
 }
