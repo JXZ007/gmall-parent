@@ -3,11 +3,10 @@ package com.atguigu.gmall.product.controller;
 import com.atguigu.gmall.common.result.Result;
 import com.atguigu.gmall.model.product.SkuInfo;
 import com.atguigu.gmall.product.service.SkuInfoService;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import org.simpleframework.xml.Path;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author JXZ
@@ -28,5 +27,18 @@ public class SkuInfoController {
     public Result saveSkuInfo(@RequestBody SkuInfo skuInfo) {
         skuInfoService.saveSkuInfo(skuInfo);
         return Result.ok();
+    }
+
+    //http://api.gmall.com/admin/product/list/{page}/{limit}
+
+    /**
+     * 获取sku分页列表
+     */
+    @GetMapping("/list/{page}/{limit}")
+    public Result<Page<SkuInfo>> getPage(@PathVariable("page") Long page,
+                                   @PathVariable("limit") Long limit) {
+        Page<SkuInfo> skuInfoPage = new Page<>(page, limit);
+        skuInfoService.page(skuInfoPage);
+        return Result.ok(skuInfoPage);
     }
 }
