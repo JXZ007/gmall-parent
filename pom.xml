@@ -8,10 +8,6 @@
         <module>model</module>
         <module>service</module>
         <module>api-gateway</module>
-        <module>ware-manage</module>
-        <module>model</module>
-        <module>service</module>
-        <module>api-gateway</module>
     </modules>
 
     <!--引入spring boot 父工程-->

@@ -51,4 +51,4 @@ spring:
     sender:
       type: web
 authinfo:
-  urls: ["/cart.html","/order.html"]  #"/list.html","/myOrder.html","/order.html","/aaaa",
+  urls: ["/cart.html","/order.html","/list.html"]  #"/list.html","/myOrder.html","/order.html","/aaaa",

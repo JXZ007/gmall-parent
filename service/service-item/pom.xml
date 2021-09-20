@@ -2,39 +2,37 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>com.atguigu.gmall</groupId>
         <artifactId>service</artifactId>
+        <groupId>com.atguigu.gmall</groupId>
         <version>1.0</version>
     </parent>
+    <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service-product</artifactId>
-    <version>1.0</version>
-
-    <packaging>jar</packaging>
-    <name>service-product</name>
-    <description>service-product</description>
-
+    <artifactId>service-item</artifactId>
+    <description>商品详情页服务</description>
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
     <dependencies>
         <dependency>
             <groupId>com.atguigu.gmall</groupId>
             <artifactId>service-feign-client</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.redisson/redisson -->
         <dependency>
-            <groupId>io.minio</groupId>
-            <artifactId>minio</artifactId>
-            <version>7.0.2</version>
+            <groupId>org.redisson</groupId>
+            <artifactId>redisson</artifactId>
+            <version>3.16.1</version>
         </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-configuration-processor</artifactId>
-            <optional>true</optional>
-        </dependency>
+
     </dependencies>
+
     <build>
-        <finalName>service-product</finalName>
+        <finalName>service-item</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

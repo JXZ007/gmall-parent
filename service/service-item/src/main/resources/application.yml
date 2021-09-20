@@ -1,0 +1,31 @@
+server:
+  port: 9000
+  tomcat:
+    accept-count: 10000  # tomcat线程池的队列长度  ServerProperties.Tomcat
+    threads:
+      max: 5000
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  zipkin:
+    base-url: http://192.168.100.100:9411
+    sender:
+      type: web
+  redis:
+    host: 192.168.100.100
+    port: 6379
+
+
+item-service:  # 配置自己的业务线程池
+  thread:
+    core: 16
+    max:  32
+    keepalive: 60000
+    queue-length: 10000
+
+logging:
+  level:
+    com:
+      atguigu:
+        gmall: debug
